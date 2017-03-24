@@ -1,0 +1,4 @@
+
+.tasks_panel > .panel-body, 
+.categories_panel > .panel-body  { max-height: 700px; min-height: 700px; overflow: auto; }
+

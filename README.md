@@ -1,1 +1,6 @@
-# react-redux-bootcamp
+
+
+npm install
+npm start
+
+localhost:8080
