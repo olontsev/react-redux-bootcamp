@@ -21,9 +21,9 @@ class CategoriesTreeItem extends React.Component {
            {' '} 
            {catName}
            {' '}
-           <Button className="glyphicon glyphicon-pencil" bsSize="xsmall" onClick={() => { this.props.onEdit(catId) }}></Button>
-           <Button className="glyphicon glyphicon-plus pull-right" bsSize="xsmall"onClick={() => { this.props.onAddChild(catId) }}></Button>
-           <Button className="glyphicon glyphicon-trash pull-right" bsSize="xsmall" onClick={() => { this.props.onDelete(catId) }}></Button>
+           <Button className="glyphicon glyphicon-pencil" bsSize="xsmall" onClick={(e) => { this.props.onEdit(catId); e.stopPropagation(); }}></Button>
+           <Button className="glyphicon glyphicon-plus pull-right" bsSize="xsmall"onClick={(e) => { this.props.onAddChild(catId); e.stopPropagation(); }}></Button>
+           <Button className="glyphicon glyphicon-trash pull-right" bsSize="xsmall" onClick={(e) => { this.props.onDelete(catId); e.stopPropagation(); }}></Button>
         </Form>
       </li>
     );

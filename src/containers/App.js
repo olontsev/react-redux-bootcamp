@@ -22,10 +22,10 @@ export default class App extends Component {
           </Col>
         </Row>
         <Row className="show-grid">
-          <Col xs={4} md={4}>
+          <Col xs={5} md={5}>
             <CategoriesContainer />
           </Col>
-          <Col xs={8} md={8}>
+          <Col xs={7} md={7}>
             <TasksPanel />
           </Col>
         </Row>
