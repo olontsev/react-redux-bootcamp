@@ -1,20 +1,10 @@
 import React from 'react';
+import ReactDOM from 'react-dom'
 import CategoriesTree from '../components/CategoriesTree';
 import { Modal, Panel, FormGroup, InputGroup, FormControl, Button } from 'react-bootstrap';
 
 class CategoriesPanel extends React.Component {
   
-  constructor(props) {
-    super(props);
-    this.state = {
-      newName: '',
-      catName: ''
-    };
-    console.log(props.editCategoryId);
-    if(this.props.editCategoryId && this.props.categories.dataById[this.props.editCategoryId])
-      this.state.catName = this.props.categories.dataById[this.props.editCategoryId].name;
-  }
-
   render() {
     let treeProps = {
       categories: this.props.categories,
@@ -24,11 +14,21 @@ class CategoriesPanel extends React.Component {
       onAddChild: this.props.onCategoryAddChild
     }
 
+    let onCategoryAddClick = () => {
+      this.props.onCategoryAdd(this.addNameInput.value); 
+      this.addNameInput.value = '';
+    }
+
+    let onCategoryRenameClick = () => {
+      this.props.onCategoryAdd(this.editNameInput.value); 
+      this.editNameInput.value = '';
+    }
+
     let header = <FormGroup>
           <InputGroup>
-            <FormControl type="text" placeholder="Enter Category Title" value={this.state.newName} onChange={(e) => { this.setState({ newName: e.target.value }) }} />
+            <FormControl type="text" placeholder="Enter Category Title" ref={(FormControl) => { this.addNameInput = ReactDOM.findDOMNode(FormControl); }} />
             <InputGroup.Button>
-              <Button onClick={() => { this.props.onCategoryAdd(this.state.newName); this.setState({ newName: '' }); }}>Add</Button>
+              <Button onClick={ onCategoryAddClick }>Add</Button>
             </InputGroup.Button>
           </InputGroup>
         </FormGroup>;
@@ -39,9 +39,9 @@ class CategoriesPanel extends React.Component {
                       <Panel>
                         <FormGroup>
                           <InputGroup>
-                            <FormControl type="text" placeholder="Enter Category Title" value={this.state.catName} onChange={(e) => { this.setState({ catName: e.target.value }) }} />
+                            <FormControl type="text" placeholder="Enter Category Title" ref={(FormControl) => { this.editNameInput = ReactDOM.findDOMNode(FormControl); }} />
                             <InputGroup.Button>
-                              <Button onClick={() => { this.props.onCategoryRename(this.state.catName); this.setState({ catName: '' }); }}>Rename</Button>
+                              <Button onClick={() => { onCategoryRenameClick }}>Rename</Button>
                             </InputGroup.Button>
                           </InputGroup>
                         </FormGroup>

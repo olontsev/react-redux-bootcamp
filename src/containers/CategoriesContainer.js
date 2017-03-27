@@ -23,10 +23,16 @@ const transformCategoriesState = (categories, branchIds) => {   // @todo: доб
 }
 
 const mapStateToProps = (state) => {
-  return {
+  let props = {
     categories: transformCategoriesState(state.categories, state.categories.rootIds),
-    editCategoryId: state.categories.editId
+    editCategoryId: 0,
+    editCategoryName: ''
+  };
+  if(state.categories.editId && state.categories.dataById[state.categories.editId]) {
+    state.editCategoryId = state.categories.editId;
+    state.editCategoryName = state.categories.dataById[state.categories.editId].name;
   }
+  return props;
 }
 
 const mapDispatchToProps = (dispatch) => {
