@@ -60,9 +60,16 @@ const categoriesReducer = (state = initialState, action) => {
         editId: action.id
       }
 
+    case types.CANCEL_EDIT_CATEGORY:
+      return {
+        ...state,
+        editId: 0
+      }      
+
     case types.RENAME_CATEGORY:
       return {
         ...state,
+        editId: 0,
         dataById: {
           ...state.dataById,
           [action.id]: {

@@ -36,6 +36,12 @@ export function editCategory(id) {
   };
 }
 
+export function cancelEditCategory(id) {
+  return {
+    type: types.CANCEL_EDIT_CATEGORY
+  };
+}
+
 export function renameCategory(id, name) {
   return {
     type: types.RENAME_CATEGORY,

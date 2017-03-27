@@ -29,8 +29,8 @@ const mapStateToProps = (state) => {
     editCategoryName: ''
   };
   if(state.categories.editId && state.categories.dataById[state.categories.editId]) {
-    state.editCategoryId = state.categories.editId;
-    state.editCategoryName = state.categories.dataById[state.categories.editId].name;
+    props.editCategoryId = state.categories.editId;
+    props.editCategoryName = state.categories.dataById[state.categories.editId].name;
   }
   return props;
 }
@@ -42,7 +42,8 @@ const mapDispatchToProps = (dispatch) => {
     onCategoryAddChild: (id) => { dispatch(actions.addChildCategory(id)) },    
     onCategoryDelete: (id) => { dispatch(actions.deleteCategory(id)) },
     onCategoryEdit: (id) => { dispatch(actions.editCategory(id)) },
-    onCategoryRename: (id) => { dispatch(actions.renameCategory(id)) }
+    onCategoryCancelEdit: () => { dispatch(actions.cancelEditCategory()) },
+    onCategoryRename: (id, name) => { dispatch(actions.renameCategory(id, name)) }
   }
 }
 
